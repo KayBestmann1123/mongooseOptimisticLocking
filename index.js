@@ -3,35 +3,37 @@ const connection = mongoose.createConnection(
   "mongodb://localhost:27017/mycollection"
 );
 
-const house = new mongoose.Schema({
-    name: {type: String ,required: true},
-    photos: [String],
-    status: {type: String},
-  })
-  
-  const House = connection.model('House', house);
+(async () => {
 
-const houseName = "house1";
+  const houseSchema = new mongoose.Schema({
+      name: {type: String ,required: true},
+      photos: [String],
+      status: {type: String},
+    })
+    
+  const HouseConnection = await connection.model('House', houseSchema);
 
-House.insertMany([
-    {
-        name: houseName,
-        photos: ["photo1", "photo2", "photo3"],
-        status: "status1",
-    }
-])
+  const houseName = "house1";
 
-// const house = await House.findOne({ houseName });
-// if (house.photos.length < 2) {
-//   throw new Error('House must have at least two photos!');
-// }
+  await HouseConnection.insertMany([
+      {
+          name: houseName,
+          photos: ["photo1", "photo2", "photo3"],
+          status: "status1",
+      }
+  ])
 
-// console.log("test");
+  // copy paste mongoose doc. example
+  const house = await HouseConnection.findOne({ houseName });
+  if (house.photos.length < 2) {
+    throw new Error('House must have at least two photos!');
+  }
 
-// const house2 = await House.findOne({ houseName });
-// house2.photos = [];
-// house2.save();
+  const house2 = await HouseConnection.findOne({ houseName });
+  house2.photos = [];
+  house2.save();
 
-// // Marks the house as 'APPROVED' even though it has 0 photos!
-// house.status = 'APPROVED';
-// house.save();
+  // Marks the house as 'APPROVED' even though it has 0 photos!
+  house.status = 'APPROVED';
+  house.save();
+})();
