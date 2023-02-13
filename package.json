@@ -1,0 +1,22 @@
+{
+  "name": "mongooseoptimisticlocking",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "mongoose": "6.9.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KayBestmann1123/mongooseOptimisticLocking.git"
+  },
+  "author": "Kay",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KayBestmann1123/mongooseOptimisticLocking/issues"
+  },
+  "homepage": "https://github.com/KayBestmann1123/mongooseOptimisticLocking#readme"
+}
